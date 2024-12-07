@@ -37,56 +37,6 @@ Follow these steps to run the project locally:
 
 ### **1. Clone the repository**
 ```bash
-git clone 
-cd <project-directory>
-
-
-Here’s a **README.md** for your project to ensure proper documentation and guidance for users or collaborators.
-
----
-
-### **README.md**
-
-```markdown
-# eCommerce Order Packaging System
-
-This project simulates a product ordering and packaging system. The application allows users to select multiple products, place an order, and see how the selected items are split into packages based on predefined constraints like price limits and courier shipping weight rules.
-
----
-
-## 🚀 **Features**
-
-- **Product List Display**: Shows all products with checkboxes to select items.
-- **Place Order**: Submits selected items to the server for packaging calculation.
-- **Package Calculation**: Automatically splits the selected items into packages while adhering to:
-  - Maximum total cost of $250 per package for international customs purposes.
-  - Even distribution of weight across multiple packages.
-- **Courier Charges**: Displays shipping costs based on total weight of each package.
-
----
-
-## 🛠️ **Tech Stack**
-
-### **Frontend**
-- React + Vite
-- TypeScript
-- Axios
-- CSS (Custom Styles)
-
-### **Backend**
-- Node.js
-- Express.js
-- MongoDB
-- Mongoose
-
----
-
-## 🏗️ **Setup Instructions**
-
-Follow these steps to run the project locally:
-
-### **1. Clone the repository**
-```bash
 git clone https://github.com/fearalert/geek_tech/
 cd backend_task
 ```
@@ -234,7 +184,7 @@ Receives selected items from the frontend and calculates packages based on rules
     package.json
     package-lock.json
     tsconfig.json
-    
+
 /geektech_nodeapp_frontend
     /public
     /src
