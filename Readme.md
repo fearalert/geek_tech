@@ -3,6 +3,7 @@
 This project simulates a product ordering and packaging system. The application allows users to select multiple products, place an order, and see how the selected items are split into packages based on predefined constraints like price limits and courier shipping weight rules.
 
 ---
+![alt text](image.png)
 
 ## 🚀 **Features**
 
