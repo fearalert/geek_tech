@@ -77,6 +77,10 @@ const ProductList = () => {
     }
   };
 
+
+  // Sorting orders based on datetime of creation
+  const sortedOrders= orders.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+
   return (
     <div className="app-container">
       <div className="products-section">
@@ -134,9 +138,9 @@ const ProductList = () => {
             <div className="spinner"></div>
             <p>Loading orders...</p>
           </div>
-        ) : orders.length > 0 ? (
+        ) : sortedOrders.length > 0 ? (
           <div className="order-list">
-            {orders.map((order) => (
+            {sortedOrders.map((order) => (
               <div key={order._id} className="order-card">
                 <div className="order-header">
                   <h3 className="order-h3">Order #{order._id.slice(-6)}</h3>
