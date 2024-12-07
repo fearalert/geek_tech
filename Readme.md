@@ -155,12 +155,124 @@ const OrderSchema = new Schema<IOrder>({
 ## 📦 **API Endpoints**
 
 ### 1. **`GET /api/products/get`**
-Fetch all the products available in the store.
+Fetch all the available products in the store.
+
+#### **Request**
+
+```http
+GET /api/products/get
+```
+
+#### **Response**
+
+```json
+[
+  {
+    "_id": "product_id_1",
+    "name": "Item 1",
+    "price": 10,
+    "weight": 100
+  },
+  {
+    "_id": "product_id_2",
+    "name": "Item 2",
+    "price": 30,
+    "weight": 200
+  },
+  {
+    "_id": "product_id_3",
+    "name": "Item 3",
+    "price": 40,
+    "weight": 300
+  }
+]
+```
 
 ---
 
 ### 2. **`POST /api/orders/place-order`**
-Receives selected items from the frontend and calculates packages based on rules.
+Places an order based on selected items. The backend splits these items into valid packages using a custom logic defined in `utils/calculate.package`. Courier costs are predefined and added to the response.
+
+#### **Request**
+
+##### Body Parameters
+```json
+{
+  "selectedItems": ["product_id_1", "product_id_2"]
+}
+```
+
+Where:
+- `selectedItems`: An array of product IDs selected by the user.
+
+---
+
+#### **Response**
+
+On success, this endpoint will return the calculated order result, including splitting logic into packages:
+
+```json
+[
+  {
+    "packageNumber": 1,
+    "items": ["Item 1", "Item 2"],
+    "totalPrice": 40,
+    "totalWeight": 300,
+    "courierPrice": 15
+  },
+  {
+    "packageNumber": 2,
+    "items": ["Item 3"],
+    "totalPrice": 40,
+    "totalWeight": 300,
+    "courierPrice": 15
+  }
+]
+```
+
+---
+
+### 3. **`GET /api/orders/get-orders`**
+Retrieves all previously placed orders stored in the database.
+
+#### **Request**
+
+```http
+GET /api/orders/get-orders
+```
+
+#### **Response**
+
+```json
+[
+  {
+    "_id": "order_id_1",
+    "selectedItems": ["product_id_1", "product_id_2"],
+    "packages": [
+      {
+        "packageNumber": 1,
+        "items": ["Item 1", "Item 2"],
+        "totalPrice": 40,
+        "totalWeight": 300,
+        "courierPrice": 15
+      }
+    ]
+  },
+  {
+    "_id": "order_id_2",
+    "selectedItems": ["product_id_3"],
+    "packages": [
+      {
+        "packageNumber": 1,
+        "items": ["Item 3"],
+        "totalPrice": 40,
+        "totalWeight": 300,
+        "courierPrice": 15
+      }
+    ]
+  }
+]
+```
 
 ---
 
